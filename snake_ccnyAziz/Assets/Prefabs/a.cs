@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using System.Linq;
+using UnityEditor;
 
 public class a : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class a : MonoBehaviour
 
     List<Transform> tail = new List<Transform>();
     bool ate = false;
-    public GameObject tailPrefab; 
+    public GameObject tailPrefab;
+
+    public GameManager myManager;
 
 
 
@@ -29,6 +32,16 @@ public class a : MonoBehaviour
     void Update()
     {
         ChangeDirection();
+
+
+
+
+
+
+        
+
+
+
     }
 
     void MoveSnake()
@@ -87,6 +100,13 @@ public class a : MonoBehaviour
 
             //Debug.Log("food eaten");
             Destroy(collision.gameObject);
+
+            myManager.FoodEaten();
+        }
+
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("Wall hit!!");
         }
     }
 }
