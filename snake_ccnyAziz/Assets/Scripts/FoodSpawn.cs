@@ -20,9 +20,10 @@ public class FoodSpawn : MonoBehaviour
     void Start()
     {
         //Invoke("Spawn", 4); //Spawn food one time 3 seconds after the Invoke is called
-        InvokeRepeating("Spawn", 3, 0.5f); //Spawn food every 4 seconds, 3 seconds after InvokeRepeating is called the first time
+        InvokeRepeating("Spawn", 1, 0.01f); //Spawn food every 4 seconds, 3 seconds after InvokeRepeating is called the first time
                                         //NEXT STEPS: change this to a single Invoke and then only instantiate a new food after the previous one has been eaten (use a bool!)
 
+        //changed food spawn rate here
     }
 
     // Update is called once per frame

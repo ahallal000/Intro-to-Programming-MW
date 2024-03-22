@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using System.Linq;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class a : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class a : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("MoveSnake", 0.1f, 0.1f);
+        InvokeRepeating("MoveSnake", 0.1f, 0.1f); //changed movement speed
     }
 
     // Update is called once per frame
@@ -99,7 +100,9 @@ public class a : MonoBehaviour
             ate = true;
 
             //Debug.Log("food eaten");
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            Scene currentScene = SceneManager.GetActiveScene(); //This and Next Line = reset player character and restart game/scene upon food collision
+            SceneManager.LoadScene(currentScene.name);
 
             myManager.FoodEaten();
         }
@@ -107,6 +110,7 @@ public class a : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             Debug.Log("Wall hit!!");
+            SceneManager.LoadScene(1); //sends player to end scene if succesfully gits wall with player character
         }
     }
 }
