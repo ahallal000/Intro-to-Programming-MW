@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
 
 
+
+    public bool flippedLeft;
+    public bool facingLeft;
     void Start()
     {
 
@@ -40,12 +43,16 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("A pressed");
             newPos.x -= playerSpeed;
+            flippedLeft = true;
+            Flip(facingLeft);
 
         }
         else if (Input.GetKey(KeyCode.D))
         {
             //Debug.Log("D pressed");
             newPos.x += playerSpeed;
+            flippedLeft = false;
+            Flip(facingLeft);
 
         }
         transform.position = newPos;
@@ -83,5 +90,30 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         healthBarScript.SetHealth(currentHealth);
     }
+
+
+
+    void Flip(bool facingLeft)
+    {
+        if (facingLeft && !flippedLeft)
+        {
+
+            //Debug.Log("Facing Right");
+
+            transform.Rotate(0, -180, 0);
+            flippedLeft = true;
+        }
+        if(!facingLeft && flippedLeft)
+        {
+            //Debug.Log("Facing Left");
+
+            transform.Rotate(0,-180, 0);
+            flippedLeft = false;
+        }
+
+    }
+
+
+
 
 }
