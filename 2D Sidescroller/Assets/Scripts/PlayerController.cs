@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("A pressed");
             newPos.x -= playerSpeed;
-            flippedLeft = true;
+            facingLeft = true;
+
             Flip(facingLeft);
 
         }
@@ -51,7 +52,8 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("D pressed");
             newPos.x += playerSpeed;
-            flippedLeft = false;
+            facingLeft = false;
+
             Flip(facingLeft);
 
         }
