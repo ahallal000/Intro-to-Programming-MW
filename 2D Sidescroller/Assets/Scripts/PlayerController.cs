@@ -20,6 +20,14 @@ public class PlayerController : MonoBehaviour
 
     public bool flippedLeft;
     public bool facingLeft;
+
+
+
+    public AudioSource ObstacleAudio;
+
+
+
+
     void Start()
     {
 
@@ -82,6 +90,9 @@ public class PlayerController : MonoBehaviour
         {
             //currentHealth = currentHealth - 1;
             //Debug.Log("Lava Touched");
+
+            ObstacleAudio.Play();
+
             TakeDamage(1);
         }
 
